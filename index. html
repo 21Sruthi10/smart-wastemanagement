@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Smart Waste Management</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f7f4;color:#26332c}
+header{background:#176b49;color:white;text-align:center;padding:28px 16px}header h1{margin:0;font-size:clamp(24px,4vw,36px);letter-spacing:1px}header p{margin:10px 0 0;color:#e0f1e7}
+nav{background:#105338;display:flex;justify-content:center;gap:30px;flex-wrap:wrap;padding:14px}nav a{color:#e9f6ef;text-decoration:none}nav a:hover{text-decoration:underline}
+main{max-width:900px;margin:28px auto;padding:0 16px}.card{background:#fff;border:1px solid #d9e5dc;border-radius:16px;padding:26px;margin:22px 0;box-shadow:0 2px 8px #00000008}.card h2{color:#176b49;margin-top:0}p{line-height:1.65}.form label{display:block;margin:16px 0 8px}.form input{width:100%;padding:13px;border:1px solid #b9c9bf;border-radius:7px;font-size:16px}.form button{margin-top:16px;padding:13px 24px;background:#176b49;color:white;border:0;border-radius:7px;cursor:pointer}.form button:hover{background:#105338}.result{margin-top:16px;padding:13px;border:1px solid #78a98e;border-radius:7px;background:#eaf5ee;display:none}.tips li{margin:8px 0}footer{text-align:center;background:#105338;color:#e9f6ef;padding:20px;margin-top:30px}
+</style></head><body>
+<header><h1>SMART WASTE MANAGEMENT</h1><p>Segregate Waste Today for a Cleaner Tomorrow</p></header>
+<nav><a href="#home">Home</a><a href="#about">About</a><a href="#classifier">Waste Classifier</a><a href="#tips">Tips</a></nav>
+<main><section class="card" id="home"><h2>Welcome to Smart Waste Management</h2><p>Proper waste segregation keeps our surroundings clean and protects the environment. Identify waste items and learn how to dispose of them responsibly.</p></section>
+<section class="card form" id="classifier"><h2>Identify Your Waste</h2><label for="waste">Enter a waste item (example: banana peel)</label><input id="waste" placeholder="e.g., banana peel"/><button onclick="classifyWaste()">Identify Waste</button><div class="result" id="result" role="status"></div></section>
+<section class="card tips" id="tips"><h2>Waste Management Tips</h2><ul><li>Separate wet and dry waste.</li><li>Reuse items whenever possible.</li><li>Recycle paper, glass, and suitable plastics.</li><li>Dispose of batteries and e-waste through proper collection points.</li><li>Compost kitchen scraps where possible.</li></ul></section>
+<section class="card" id="about"><h2>About</h2><p>This website helps users learn simple waste categories and responsible disposal practices to support a cleaner environment.</p></section></main>
+<footer>Reduce&nbsp; • &nbsp;Reuse&nbsp; • &nbsp;Recycle</footer>
+<script>
+function classifyWaste(){let v=document.getElementById('waste').value.trim().toLowerCase();let category='',advice='';if(!v){category='Please enter a waste item.';advice='';}else if(/banana|food|peel|vegetable|fruit|leftover|organic/.test(v)){category='Biodegradable Waste';advice='Place it in a wet-waste or compost bin.';}else if(/battery|chemical|paint|medicine|bulb/.test(v)){category='Special / Hazardous Waste';advice='Use an appropriate authorized collection point; do not mix with household waste.';}else if(/plastic|paper|cardboard|glass|metal|can|tin/.test(v)){category='Potentially Recyclable Waste';advice='Keep it clean and dry, then place it in the recycling stream where accepted.';}else{category='Waste type not recognized';advice='Check local waste sorting guidance for the correct disposal method.';}let r=document.getElementById('result');r.style.display='block';r.textContent=advice?`Result: ${category} | Disposal: ${advice}`:`Result: ${category}`;}
+document.getElementById('waste').addEventListener('keydown',e=>{if(e.key==='Enter')classifyWaste()});
+</script></body></html>
